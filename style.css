@@ -89,3 +89,15 @@ button {
 .smallFont {
   font-size: 22px;
 }
+h1 {
+  overflow-x: scroll;
+}
+::-webkit-scrollbar {
+  height: 8px;
+  visibility: hidden;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #2e2e2e;
+  border-radius: 5px;
+}
