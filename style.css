@@ -53,8 +53,8 @@ body {
   align-items: center;
   justify-content: center;
   width: 260px;
-  height: 60%;
-  margin-top: 30px;
+  height: 70%;
+  margin-bottom: 10px;
 }
 button {
   width: 55px;
@@ -100,4 +100,10 @@ h1 {
 ::-webkit-scrollbar-thumb {
   background: #2e2e2e;
   border-radius: 5px;
+}
+.copy {
+  width: 235px;
+  height: 40px;
+  background-color: #d58b2e;
+  color: #000;
 }

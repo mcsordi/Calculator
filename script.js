@@ -4,6 +4,7 @@ let allOperations = [...document.querySelectorAll(".operations")];
 let clearAll = document.getElementById("clearResult");
 let backspace = document.getElementById("backspace");
 let buttonEqual = document.getElementById("equal");
+let copyButton = document.getElementById("copy");
 
 const removeFontSize = () => {
   if (response.innerHTML == "Expressão mal formada") {
@@ -57,13 +58,13 @@ backspace.addEventListener("click", () => {
       numElements - 1
     );
   }
-  console.log(positionNumbers);
   if (
     positionNumbers == "+ " ||
     positionNumbers == "-" ||
     positionNumbers == "x " ||
     positionNumbers == "÷" ||
-    positionNumbers == "."
+    positionNumbers == "." ||
+    positionNumbers == 0
   ) {
     signal = true;
   }
@@ -85,6 +86,10 @@ buttonEqual.addEventListener("click", () => {
     response.classList.add("smallFont");
     return;
   }
+});
+
+copyButton.addEventListener("click", () => {
+  navigator.clipboard.writeText(response.innerHTML);
 });
 
 getElement(allNumbers);
