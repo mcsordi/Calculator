@@ -44,12 +44,18 @@ allOperations.map((element) => {
 });
 clearAll.addEventListener("click", () => {
   removeFontSize();
-  response.innerHTML = "0";
+  response.innerHTML = 0;
+  signal = true;
 });
 backspace.addEventListener("click", () => {
   removeFontSize();
   let numElements = response.innerHTML.length;
   let positionNumbers = response.innerHTML[response.innerHTML.length - 1];
+  if (numElements == 1) {
+    positionNumbers = 0;
+  }
+  console.log("backspace.addEventListener ~ positionNumbers:", positionNumbers);
+
   if (numElements <= 1) {
     response.innerHTML = 0;
   } else {
@@ -93,3 +99,9 @@ copyButton.addEventListener("click", () => {
 });
 
 getElement(allNumbers);
+
+window.onload = () => {
+  if (response.innerHTML == 0) {
+    signal = true;
+  }
+};
