@@ -21,9 +21,26 @@ const getElement = (el) => {
       } else {
         response.innerHTML += evt.target.innerHTML;
       }
+      signal = false;
     });
   });
 };
+
+let signal = false;
+
+allOperations.map((element) => {
+  element.addEventListener("click", (evt) => {
+    removeFontSize();
+    if (!signal) {
+      signal = true;
+      if (response.innerHTML == 0) {
+        response.innerHTML = evt.target.innerHTML;
+      } else {
+        response.innerHTML += evt.target.innerHTML;
+      }
+    }
+  });
+});
 clearAll.addEventListener("click", () => {
   removeFontSize();
   response.innerHTML = "0";
@@ -31,6 +48,7 @@ clearAll.addEventListener("click", () => {
 backspace.addEventListener("click", () => {
   removeFontSize();
   let numElements = response.innerHTML.length;
+  let positionNumbers = response.innerHTML[response.innerHTML.length - 1];
   if (numElements <= 1) {
     response.innerHTML = 0;
   } else {
@@ -38,6 +56,16 @@ backspace.addEventListener("click", () => {
       numElements[0],
       numElements - 1
     );
+  }
+  console.log(positionNumbers);
+  if (
+    positionNumbers == "+ " ||
+    positionNumbers == "-" ||
+    positionNumbers == "x " ||
+    positionNumbers == "÷" ||
+    positionNumbers == "."
+  ) {
+    signal = true;
   }
 });
 
@@ -60,4 +88,3 @@ buttonEqual.addEventListener("click", () => {
 });
 
 getElement(allNumbers);
-getElement(allOperations);
